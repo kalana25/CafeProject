@@ -48,5 +48,12 @@ namespace CafeApplication
             discount.MdiParent = this;
             discount.Show();
         }
+
+        private void placeOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlaceOrder order = new PlaceOrder();
+            order.MdiParent = this;
+            order.Show();
+        }
     }
 }

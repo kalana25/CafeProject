@@ -101,6 +101,7 @@
             this.placeOrderToolStripMenuItem.Name = "placeOrderToolStripMenuItem";
             this.placeOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.placeOrderToolStripMenuItem.Text = "Place Order";
+            this.placeOrderToolStripMenuItem.Click += new System.EventHandler(this.placeOrderToolStripMenuItem_Click);
             // 
             // invoiceToolStripMenuItem
             // 
