@@ -34,7 +34,7 @@ namespace DataAccessLayer
 
         public int insert(int menuId, decimal rate, DateTime startDate,DateTime endDate)
         {
-            string query = $"insert into MenuDiscount(SetMenuId,Rate,StartDate,EndDate) values({menuId},{rate},CAST({startDate.ToShortDateString()} AS DATETIME),CAST({endDate.ToShortDateString()} AS DATETIME))";
+            string query = $"insert into MenuDiscount(SetMenuId,Rate,StartDate,EndDate) values({menuId},{rate},CAST('{startDate.ToString("yyyy-MM-dd")}' AS DATETIME),CAST('{endDate.ToString("yyyy-MM-dd")}' AS DATETIME))";
             using (SqlConnection con = new SqlConnection(Database.ConnectionString))
             {
                 SqlCommand command = new SqlCommand(query, con);
@@ -72,7 +72,7 @@ namespace DataAccessLayer
 
         public int Edit(int id,int menuId, decimal rate, DateTime startDate, DateTime endDate)
         {
-            string query = $"update MenuDiscount set SetMenuId={menuId}, Rate={rate}, StartDate={startDate.ToShortDateString()} ,EndDate={endDate.ToShortDateString()} where Id={id}";
+            string query = $"update MenuDiscount set SetMenuId={menuId}, Rate={rate}, StartDate=CAST('{startDate.ToString("yyyy-MM-dd")}' AS DATETIME), EndDate=CAST('{endDate.ToString("yyyy-MM-dd")}' AS DATETIME) where Id={id}";
             using (SqlConnection con = new SqlConnection(Database.ConnectionString))
             {
                 SqlCommand command = new SqlCommand(query, con);
@@ -89,5 +89,27 @@ namespace DataAccessLayer
             }
         }
 
+        public DataTable Retrieve(int setMenuId,DateTime date)
+        {
+            string query = $"select Id,SetMenuId,Rate,StartDate,EndDate from MenuDiscount where SetMenuId={setMenuId} and StartDate>=CAST('{date.ToString("yyyy-MM-dd")}' AS DATETIME) and EndDate<=CAST('{date.ToString("yyyy-MM-dd")}' AS DATETIME)";
+            using (SqlConnection con = new SqlConnection(Database.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                try
+                {
+                    con.Open();
+                    DataTable dt = new DataTable();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                        return dt;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

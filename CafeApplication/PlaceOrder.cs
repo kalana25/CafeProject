@@ -14,6 +14,7 @@ namespace CafeApplication
     {
         private readonly Order order;
         private readonly SetMenu setMenu;
+        private readonly Discount discount;
         private readonly DataTable orderItemDataTable;
         private decimal grandTotal = 0;
         public PlaceOrder()
@@ -21,6 +22,7 @@ namespace CafeApplication
             InitializeComponent();
             order = new Order();
             setMenu = new SetMenu();
+            discount = new Discount();
             orderItemDataTable = new DataTable();
         }
 
@@ -115,6 +117,11 @@ namespace CafeApplication
             txtItemCode.Text = gvMenu.CurrentRow.Cells["Code"].Value.ToString();
             txtItemName.Text = gvMenu.CurrentRow.Cells["Name"].Value.ToString();
             txtItemPrice.Text = gvMenu.CurrentRow.Cells["Price"].Value.ToString();
+            DataTable applicableDiscount = discount.Retrieve(int.Parse(gvMenu.CurrentRow.Cells["Id"].Value.ToString()), DateTime.Today);
+            if(applicableDiscount.Rows.Count>0)
+            {
+
+            }
             txtQuantity.Focus();
         }
     }

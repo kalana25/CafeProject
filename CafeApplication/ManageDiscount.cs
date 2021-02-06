@@ -107,17 +107,17 @@ namespace CafeApplication
             }
             else if (mode == "Edit")
             {
-                //int result = food.Edit(int.Parse(txtid.Text), txtcode.Text, txtname.Text, decimal.Parse(txtprice.Text), txtdesc.Text);
-                //if (result > 0)
-                //{
-                //    gvFood.DataSource = food.Retrieve();
-                //    gvFood.Refresh();
-                //    ClearTextbox();
-                //    btnSave.Enabled = false;
-                //    btnDelete.Enabled = false;
-                //    EnableDisableTextBoxes(false);
-                //    MessageBox.Show("Bevarage updated sussessfully.", "Update", MessageBoxButtons.OK);
-                //}
+                int result = discount.Edit(int.Parse(txtid.Text),int.Parse(cmbMenu.SelectedValue.ToString()), decimal.Parse(txtDiscountRate.Text), dtpkStartDate.Value, dtpkEndDate.Value);
+                if (result > 0)
+                {
+                    gvDiscounts.DataSource = discount.Retrieve();
+                    gvDiscounts.Refresh();
+                    ClearTextbox();
+                    btnSave.Enabled = false;
+                    btnDelete.Enabled = false;
+                    EnableDisableTextBoxes(false);
+                    MessageBox.Show("Discounts updated sussessfully.", "Update", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -132,6 +132,7 @@ namespace CafeApplication
                 txtDiscountRate.Text = dgv.CurrentRow.Cells["Rate"].Value.ToString();
                 dtpkStartDate.Value = DateTime.Parse(dgv.CurrentRow.Cells["StartDate"].Value.ToString());
                 dtpkEndDate.Value = DateTime.Parse(dgv.CurrentRow.Cells["EndDate"].Value.ToString());
+                cmbMenu.SelectedValue=int.Parse(dgv.CurrentRow.Cells["SetMenuId"].Value.ToString());
                 btnDelete.Enabled = true;
                 btnSave.Enabled = true;
                 mode = "Edit";
