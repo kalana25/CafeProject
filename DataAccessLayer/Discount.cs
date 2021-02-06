@@ -91,7 +91,7 @@ namespace DataAccessLayer
 
         public DataTable Retrieve(int setMenuId,DateTime date)
         {
-            string query = $"select Id,SetMenuId,Rate,StartDate,EndDate from MenuDiscount where SetMenuId={setMenuId} and StartDate>=CAST('{date.ToString("yyyy-MM-dd")}' AS DATETIME) and EndDate<=CAST('{date.ToString("yyyy-MM-dd")}' AS DATETIME)";
+            string query = $"select Id,SetMenuId,Rate,StartDate,EndDate from MenuDiscount where SetMenuId={setMenuId} and StartDate <='{date.ToString("yyyy-MM-dd")}' and EndDate >='{date.ToString("yyyy-MM-dd")}'";
             using (SqlConnection con = new SqlConnection(Database.ConnectionString))
             {
                 SqlCommand command = new SqlCommand(query, con);

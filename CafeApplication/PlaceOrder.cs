@@ -78,7 +78,7 @@ namespace CafeApplication
             txtItemName.Clear();
             txtItemPrice.Clear();
             txtQuantity.Clear();
-            txtDiscountRate.Clear();
+            txtRate.Clear();
             txtDiscountPrice.Clear();
         }
 
@@ -87,7 +87,7 @@ namespace CafeApplication
             txtItemCode.Text = gvFoodBevarage.CurrentRow.Cells["Code"].Value.ToString();
             txtItemName.Text = gvFoodBevarage.CurrentRow.Cells["Name"].Value.ToString();
             txtItemPrice.Text = gvFoodBevarage.CurrentRow.Cells["Price"].Value.ToString();
-            txtDiscountRate.Text = "0";
+            txtRate.Text = "0";
             txtDiscountPrice.Text = "0";
             txtQuantity.Focus();
         }
@@ -102,13 +102,19 @@ namespace CafeApplication
                 dr["Price"] = txtItemPrice.Text;
                 dr["Quantity"] = txtQuantity.Text;
                 decimal total = decimal.Parse(txtItemPrice.Text) * int.Parse(txtQuantity.Text);
-                dr["Total"] = total.ToString();
+                total = total - decimal.Parse(txtDiscountPrice.Text);
+                dr["Total"] = (total).ToString();
                 orderItemDataTable.Rows.Add(dr);
                 gvOrderItems.DataSource = orderItemDataTable;
                 gvOrderItems.Refresh();
                 grandTotal += total;
                 lblGrandTotal.Text = grandTotal.ToString();
                 ClearTextBoxes();
+            }
+            else
+            {
+                decimal discoutPrice = decimal.Parse(txtRate.Text) * decimal.Parse(txtItemPrice.Text) * int.Parse(txtQuantity.Text) / 100;
+                txtDiscountPrice.Text = discoutPrice.ToString();
             }
         }
 
@@ -120,7 +126,8 @@ namespace CafeApplication
             DataTable applicableDiscount = discount.Retrieve(int.Parse(gvMenu.CurrentRow.Cells["Id"].Value.ToString()), DateTime.Today);
             if(applicableDiscount.Rows.Count>0)
             {
-
+                decimal rate = decimal.Parse(applicableDiscount.Rows[0]["Rate"].ToString());
+                txtRate.Text = rate.ToString();
             }
             txtQuantity.Focus();
         }
