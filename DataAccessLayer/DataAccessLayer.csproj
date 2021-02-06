@@ -44,6 +44,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="SetMenu.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

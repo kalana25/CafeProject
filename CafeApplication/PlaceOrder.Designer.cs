@@ -33,33 +33,33 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.gvFoodBevarage = new System.Windows.Forms.DataGridView();
+            this.gvMenu = new System.Windows.Forms.DataGridView();
             this.txtDiscountRate = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtItemCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.txtItemPrice = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtRate = new System.Windows.Forms.TextBox();
+            this.txtDiscountPrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.gvOrderItems = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblGrandTotal = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvFoodBevarage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrderItems)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -117,21 +117,31 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // dataGridView1
+            // gvFoodBevarage
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 96);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(655, 265);
-            this.dataGridView1.TabIndex = 8;
+            this.gvFoodBevarage.AllowUserToAddRows = false;
+            this.gvFoodBevarage.AllowUserToDeleteRows = false;
+            this.gvFoodBevarage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvFoodBevarage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvFoodBevarage.Location = new System.Drawing.Point(19, 96);
+            this.gvFoodBevarage.Name = "gvFoodBevarage";
+            this.gvFoodBevarage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvFoodBevarage.Size = new System.Drawing.Size(655, 265);
+            this.gvFoodBevarage.TabIndex = 8;
+            this.gvFoodBevarage.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvFoodBevarage_CellDoubleClick);
             // 
-            // dataGridView2
+            // gvMenu
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(688, 96);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(655, 265);
-            this.dataGridView2.TabIndex = 9;
+            this.gvMenu.AllowUserToAddRows = false;
+            this.gvMenu.AllowUserToDeleteRows = false;
+            this.gvMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvMenu.Location = new System.Drawing.Point(688, 96);
+            this.gvMenu.Name = "gvMenu";
+            this.gvMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvMenu.Size = new System.Drawing.Size(655, 265);
+            this.gvMenu.TabIndex = 9;
+            this.gvMenu.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMenu_CellDoubleClick);
             // 
             // txtDiscountRate
             // 
@@ -161,13 +171,14 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Item Code";
             // 
-            // textBox1
+            // txtItemCode
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(99, 379);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(74, 27);
-            this.textBox1.TabIndex = 19;
+            this.txtItemCode.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemCode.Location = new System.Drawing.Point(99, 379);
+            this.txtItemCode.Name = "txtItemCode";
+            this.txtItemCode.ReadOnly = true;
+            this.txtItemCode.Size = new System.Drawing.Size(74, 27);
+            this.txtItemCode.TabIndex = 19;
             // 
             // label3
             // 
@@ -199,29 +210,32 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Quantity";
             // 
-            // textBox2
+            // txtItemName
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(275, 379);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(376, 27);
-            this.textBox2.TabIndex = 23;
+            this.txtItemName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemName.Location = new System.Drawing.Point(275, 379);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.ReadOnly = true;
+            this.txtItemName.Size = new System.Drawing.Size(376, 27);
+            this.txtItemName.TabIndex = 23;
             // 
-            // textBox3
+            // txtItemPrice
             // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(713, 379);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(94, 27);
-            this.textBox3.TabIndex = 24;
+            this.txtItemPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemPrice.Location = new System.Drawing.Point(713, 379);
+            this.txtItemPrice.Name = "txtItemPrice";
+            this.txtItemPrice.ReadOnly = true;
+            this.txtItemPrice.Size = new System.Drawing.Size(94, 27);
+            this.txtItemPrice.TabIndex = 24;
             // 
-            // textBox4
+            // txtQuantity
             // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(898, 379);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(65, 27);
-            this.textBox4.TabIndex = 25;
+            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.Location = new System.Drawing.Point(898, 379);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(65, 27);
+            this.txtQuantity.TabIndex = 25;
+            this.txtQuantity.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyUp);
             // 
             // label7
             // 
@@ -233,21 +247,23 @@
             this.label7.TabIndex = 26;
             this.label7.Text = "Discount";
             // 
-            // textBox5
+            // txtRate
             // 
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(1057, 379);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(48, 27);
-            this.textBox5.TabIndex = 27;
+            this.txtRate.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRate.Location = new System.Drawing.Point(1057, 379);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
+            this.txtRate.Size = new System.Drawing.Size(48, 27);
+            this.txtRate.TabIndex = 27;
             // 
-            // textBox6
+            // txtDiscountPrice
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(1224, 379);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(94, 27);
-            this.textBox6.TabIndex = 29;
+            this.txtDiscountPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiscountPrice.Location = new System.Drawing.Point(1224, 379);
+            this.txtDiscountPrice.Name = "txtDiscountPrice";
+            this.txtDiscountPrice.ReadOnly = true;
+            this.txtDiscountPrice.Size = new System.Drawing.Size(94, 27);
+            this.txtDiscountPrice.TabIndex = 29;
             // 
             // label8
             // 
@@ -281,13 +297,17 @@
             this.label10.TabIndex = 31;
             this.label10.Text = "Menu";
             // 
-            // dataGridView3
+            // gvOrderItems
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(19, 441);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(655, 185);
-            this.dataGridView3.TabIndex = 32;
+            this.gvOrderItems.AllowUserToAddRows = false;
+            this.gvOrderItems.AllowUserToDeleteRows = false;
+            this.gvOrderItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvOrderItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvOrderItems.Location = new System.Drawing.Point(19, 441);
+            this.gvOrderItems.Name = "gvOrderItems";
+            this.gvOrderItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvOrderItems.Size = new System.Drawing.Size(655, 185);
+            this.gvOrderItems.TabIndex = 32;
             // 
             // label11
             // 
@@ -311,16 +331,16 @@
             this.label12.TabIndex = 34;
             this.label12.Text = "Total";
             // 
-            // label13
+            // lblGrandTotal
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.label13.Location = new System.Drawing.Point(785, 441);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 41);
-            this.label13.TabIndex = 35;
-            this.label13.Text = "0.00";
+            this.lblGrandTotal.AutoSize = true;
+            this.lblGrandTotal.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblGrandTotal.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblGrandTotal.Location = new System.Drawing.Point(785, 441);
+            this.lblGrandTotal.Name = "lblGrandTotal";
+            this.lblGrandTotal.Size = new System.Drawing.Size(73, 41);
+            this.lblGrandTotal.TabIndex = 35;
+            this.lblGrandTotal.Text = "0.00";
             // 
             // label14
             // 
@@ -352,28 +372,28 @@
             this.ClientSize = new System.Drawing.Size(1360, 676);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblGrandTotal);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.gvOrderItems);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtDiscountPrice);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtRate);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtQuantity);
+            this.Controls.Add(this.txtItemPrice);
+            this.Controls.Add(this.txtItemName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtItemCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDiscountRate);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gvMenu);
+            this.Controls.Add(this.gvFoodBevarage);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnNew);
@@ -385,9 +405,10 @@
             this.Name = "PlaceOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ManageBevarage";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.Load += new System.EventHandler(this.PlaceOrder_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gvFoodBevarage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrderItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,28 +420,28 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView gvFoodBevarage;
+        private System.Windows.Forms.DataGridView gvMenu;
         private System.Windows.Forms.TextBox txtDiscountRate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtItemCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtItemName;
+        private System.Windows.Forms.TextBox txtItemPrice;
+        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtRate;
+        private System.Windows.Forms.TextBox txtDiscountPrice;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView gvOrderItems;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblGrandTotal;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
     }
