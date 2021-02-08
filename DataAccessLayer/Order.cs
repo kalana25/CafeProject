@@ -32,5 +32,72 @@ namespace DataAccessLayer
             }
         }
 
+        public int SaveOrderHeader(DateTime date,decimal amount)
+        {
+            string orderheader = $"insert into OrderHeader(OrderDate,Amount,OrderStatus) values(CAST('{date.ToString("yyyy-MM-dd")}' AS DATETIME),{amount},'ToDo')";
+            string selectquery = $"SELECT IDENT_CURRENT('OrderHeader')";
+            using (SqlConnection con = new SqlConnection(Database.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(orderheader, con);
+                SqlCommand selectCommand = new SqlCommand(selectquery, con);
+                try
+                {
+                    int orderHeaderId = 0;
+                    con.Open();
+                    if(command.ExecuteNonQuery()>0)
+                    {
+                        orderHeaderId = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    }
+                    return orderHeaderId;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public int SaveOrderMenuDetails(int orderId,int setMenuId,int quantity,decimal total)
+        {
+            string query = $"insert into OrderMenu(OrderId,SetMenuId,Quantity,Total) values({orderId},{setMenuId},{quantity},{total})";
+            using (SqlConnection con = new SqlConnection(Database.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                try
+                {
+                    con.Open();
+                    return command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public int SaveOrderProductDetails(int orderId, int productId, int quantity, decimal total)
+        {
+            string query = $"insert into OrderProduct(OrderId,ProductId,Quantity,Total) values({orderId},{productId},{quantity},{total})";
+            using (SqlConnection con = new SqlConnection(Database.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                try
+                {
+                    con.Open();
+                    return command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public string GetNextOrderRef()
+        {
+
+
+            return "";
+        }
     }
 }

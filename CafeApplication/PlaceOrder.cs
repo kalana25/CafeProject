@@ -17,6 +17,7 @@ namespace CafeApplication
         private readonly Discount discount;
         private readonly DataTable orderItemDataTable;
         private decimal grandTotal = 0;
+        private string itemType;
         public PlaceOrder()
         {
             InitializeComponent();
@@ -31,22 +32,29 @@ namespace CafeApplication
             this.Dispose();
         }
 
-
-
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                int orderId = order.SaveOrderHeader(DateTime.Today,grandTotal);
+                foreach(DataRow row in orderItemDataTable.Rows)
+                {
+                    if(row["ItemType"].ToString()== "Product")
+                    {
+                        order.SaveOrderProductDetails(orderId, int.Parse(row["ProductId"].ToString()), int.Parse(row["Quantity"].ToString()), decimal.Parse(row["Total"].ToString()));
+                    } 
+                    else
+                    {
+                        order.SaveOrderMenuDetails(orderId, int.Parse(row["MenuId"].ToString()), int.Parse(row["Quantity"].ToString()), decimal.Parse(row["Total"].ToString()));
+                    }
+                }
+                MessageBox.Show("Order saved sussessfully.", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                PrepareForNew();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error Occured", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
 
         private void PlaceOrder_Load(object sender, EventArgs e)
@@ -70,6 +78,12 @@ namespace CafeApplication
             orderItemDataTable.Columns.Add(colQuantity);
             DataColumn colTotal = new DataColumn("Total");
             orderItemDataTable.Columns.Add(colTotal);
+            DataColumn colProdId = new DataColumn("ProductId");
+            orderItemDataTable.Columns.Add(colProdId);
+            DataColumn colMenuId = new DataColumn("MenuId");
+            orderItemDataTable.Columns.Add(colMenuId);
+            DataColumn colItemType = new DataColumn("ItemType");
+            orderItemDataTable.Columns.Add(colItemType);
         }
 
         private void ClearTextBoxes()
@@ -82,6 +96,14 @@ namespace CafeApplication
             txtDiscountPrice.Clear();
         }
 
+        private void PrepareForNew()
+        {
+            itemType = null;
+            grandTotal = 0m;
+            orderItemDataTable.Rows.Clear();
+            lblGrandTotal.Text = "0.00";
+        }
+
         private void gvFoodBevarage_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             txtItemCode.Text = gvFoodBevarage.CurrentRow.Cells["Code"].Value.ToString();
@@ -89,6 +111,8 @@ namespace CafeApplication
             txtItemPrice.Text = gvFoodBevarage.CurrentRow.Cells["Price"].Value.ToString();
             txtRate.Text = "0";
             txtDiscountPrice.Text = "0";
+            itemType = "Product";
+            txtItemId.Text = gvFoodBevarage.CurrentRow.Cells["Id"].Value.ToString();
             txtQuantity.Focus();
         }
 
@@ -104,16 +128,33 @@ namespace CafeApplication
                 decimal total = decimal.Parse(txtItemPrice.Text) * int.Parse(txtQuantity.Text);
                 total = total - decimal.Parse(txtDiscountPrice.Text);
                 dr["Total"] = (total).ToString();
+                dr["ItemType"] = itemType;
+                if (itemType == "Menu")
+                {
+                    dr["MenuId"] = int.Parse(txtItemId.Text);
+                }
+                else
+                {
+                    dr["ProductId"] = int.Parse(txtItemId.Text);
+
+                }
+
                 orderItemDataTable.Rows.Add(dr);
                 gvOrderItems.DataSource = orderItemDataTable;
                 gvOrderItems.Refresh();
                 grandTotal += total;
                 lblGrandTotal.Text = grandTotal.ToString();
                 ClearTextBoxes();
+                txtBarcode.Focus();
             }
             else
             {
-                decimal discoutPrice = decimal.Parse(txtRate.Text) * decimal.Parse(txtItemPrice.Text) * int.Parse(txtQuantity.Text) / 100;
+                int quantity;
+                if(!int.TryParse(txtQuantity.Text,out quantity))
+                {
+                    quantity = 0;
+                }
+                decimal discoutPrice = decimal.Parse(txtRate.Text) * decimal.Parse(txtItemPrice.Text) * quantity / 100;
                 txtDiscountPrice.Text = discoutPrice.ToString();
             }
         }
@@ -123,10 +164,17 @@ namespace CafeApplication
             txtItemCode.Text = gvMenu.CurrentRow.Cells["Code"].Value.ToString();
             txtItemName.Text = gvMenu.CurrentRow.Cells["Name"].Value.ToString();
             txtItemPrice.Text = gvMenu.CurrentRow.Cells["Price"].Value.ToString();
+            txtItemId.Text = gvMenu.CurrentRow.Cells["Id"].Value.ToString();
+            itemType = "Menu";
             DataTable applicableDiscount = discount.Retrieve(int.Parse(gvMenu.CurrentRow.Cells["Id"].Value.ToString()), DateTime.Today);
-            if(applicableDiscount.Rows.Count>0)
+            decimal rate = 0m;
+            if (applicableDiscount.Rows.Count>0)
             {
-                decimal rate = decimal.Parse(applicableDiscount.Rows[0]["Rate"].ToString());
+                rate= decimal.Parse(applicableDiscount.Rows[0]["Rate"].ToString());
+                txtRate.Text = rate.ToString();
+            }
+            else
+            {
                 txtRate.Text = rate.ToString();
             }
             txtQuantity.Focus();

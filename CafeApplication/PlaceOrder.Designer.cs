@@ -30,12 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.gvFoodBevarage = new System.Windows.Forms.DataGridView();
             this.gvMenu = new System.Windows.Forms.DataGridView();
-            this.txtDiscountRate = new System.Windows.Forms.TextBox();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtItemCode = new System.Windows.Forms.TextBox();
@@ -55,8 +53,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblGrandTotal = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.txtItemId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvFoodBevarage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOrderItems)).BeginInit();
@@ -76,35 +73,13 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1037, 625);
+            this.btnSave.Location = new System.Drawing.Point(1141, 624);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 34);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.Location = new System.Drawing.Point(933, 625);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(98, 34);
-            this.btnNew.TabIndex = 5;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(1141, 624);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(98, 34);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnExit
             // 
@@ -143,13 +118,13 @@
             this.gvMenu.TabIndex = 9;
             this.gvMenu.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMenu_CellDoubleClick);
             // 
-            // txtDiscountRate
+            // txtBarcode
             // 
-            this.txtDiscountRate.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscountRate.Location = new System.Drawing.Point(196, 39);
-            this.txtDiscountRate.Name = "txtDiscountRate";
-            this.txtDiscountRate.Size = new System.Drawing.Size(478, 27);
-            this.txtDiscountRate.TabIndex = 16;
+            this.txtBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.Location = new System.Drawing.Point(196, 39);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(478, 27);
+            this.txtBarcode.TabIndex = 16;
             // 
             // label4
             // 
@@ -342,27 +317,15 @@
             this.lblGrandTotal.TabIndex = 35;
             this.lblGrandTotal.Text = "0.00";
             // 
-            // label14
+            // txtItemId
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.label14.Location = new System.Drawing.Point(687, 493);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 41);
-            this.label14.TabIndex = 36;
-            this.label14.Text = "Total";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.label15.Location = new System.Drawing.Point(785, 493);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(73, 41);
-            this.label15.TabIndex = 37;
-            this.label15.Text = "0.00";
+            this.txtItemId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemId.Location = new System.Drawing.Point(275, 412);
+            this.txtItemId.Name = "txtItemId";
+            this.txtItemId.ReadOnly = true;
+            this.txtItemId.Size = new System.Drawing.Size(74, 27);
+            this.txtItemId.TabIndex = 38;
+            this.txtItemId.Visible = false;
             // 
             // PlaceOrder
             // 
@@ -370,8 +333,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1360, 676);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtItemId);
             this.Controls.Add(this.lblGrandTotal);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -391,12 +353,10 @@
             this.Controls.Add(this.txtItemCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtDiscountRate);
+            this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.gvMenu);
             this.Controls.Add(this.gvFoodBevarage);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -417,12 +377,10 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.DataGridView gvFoodBevarage;
         private System.Windows.Forms.DataGridView gvMenu;
-        private System.Windows.Forms.TextBox txtDiscountRate;
+        private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtItemCode;
@@ -442,7 +400,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblGrandTotal;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtItemId;
     }
 }
