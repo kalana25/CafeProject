@@ -67,21 +67,21 @@
             // manageBeverateToolStripMenuItem
             // 
             this.manageBeverateToolStripMenuItem.Name = "manageBeverateToolStripMenuItem";
-            this.manageBeverateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageBeverateToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.manageBeverateToolStripMenuItem.Text = "Manage Bevarage";
             this.manageBeverateToolStripMenuItem.Click += new System.EventHandler(this.manageBeverateToolStripMenuItem_Click);
             // 
             // manageFoodToolStripMenuItem1
             // 
             this.manageFoodToolStripMenuItem1.Name = "manageFoodToolStripMenuItem1";
-            this.manageFoodToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.manageFoodToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.manageFoodToolStripMenuItem1.Text = "Manage Food";
             this.manageFoodToolStripMenuItem1.Click += new System.EventHandler(this.manageFoodToolStripMenuItem1_Click);
             // 
             // manageSetMenuToolStripMenuItem
             // 
             this.manageSetMenuToolStripMenuItem.Name = "manageSetMenuToolStripMenuItem";
-            this.manageSetMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageSetMenuToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.manageSetMenuToolStripMenuItem.Text = "Manage Set menu";
             this.manageSetMenuToolStripMenuItem.Click += new System.EventHandler(this.manageSetMenuToolStripMenuItem_Click);
             // 
@@ -98,20 +98,20 @@
             // placeOrderToolStripMenuItem
             // 
             this.placeOrderToolStripMenuItem.Name = "placeOrderToolStripMenuItem";
-            this.placeOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.placeOrderToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.placeOrderToolStripMenuItem.Text = "Place Order";
             this.placeOrderToolStripMenuItem.Click += new System.EventHandler(this.placeOrderToolStripMenuItem_Click);
             // 
             // invoiceToolStripMenuItem
             // 
             this.invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
-            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.invoiceToolStripMenuItem.Text = "Invoice";
             // 
             // discountToolStripMenuItem
             // 
             this.discountToolStripMenuItem.Name = "discountToolStripMenuItem";
-            this.discountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.discountToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
             // 
@@ -128,6 +128,7 @@
             this.updateOrderToolStripMenuItem.Name = "updateOrderToolStripMenuItem";
             this.updateOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateOrderToolStripMenuItem.Text = "Update Order";
+            this.updateOrderToolStripMenuItem.Click += new System.EventHandler(this.updateOrderToolStripMenuItem_Click);
             // 
             // Form1
             // 

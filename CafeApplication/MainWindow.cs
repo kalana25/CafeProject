@@ -55,5 +55,12 @@ namespace CafeApplication
             order.MdiParent = this;
             order.Show();
         }
+
+        private void updateOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateOrder updateOrder = new UpdateOrder();
+            updateOrder.MdiParent = this;
+            updateOrder.Show();
+        }
     }
 }
