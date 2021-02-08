@@ -25,7 +25,7 @@ namespace CafeApplication
 
         private void manageFoodToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ManageFood foodChild = new ManageFood();
+            UpdateOrder foodChild = new UpdateOrder();
             foodChild.MdiParent = this;
             foodChild.Show();
         }

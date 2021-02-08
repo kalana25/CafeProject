@@ -37,8 +37,8 @@
             this.placeOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tablePlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kitchenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,6 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bevarageToolStripMenuItem,
             this.orderToolStripMenuItem,
-            this.tablePlanToolStripMenuItem,
             this.kitchenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -68,21 +67,21 @@
             // manageBeverateToolStripMenuItem
             // 
             this.manageBeverateToolStripMenuItem.Name = "manageBeverateToolStripMenuItem";
-            this.manageBeverateToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.manageBeverateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manageBeverateToolStripMenuItem.Text = "Manage Bevarage";
             this.manageBeverateToolStripMenuItem.Click += new System.EventHandler(this.manageBeverateToolStripMenuItem_Click);
             // 
             // manageFoodToolStripMenuItem1
             // 
             this.manageFoodToolStripMenuItem1.Name = "manageFoodToolStripMenuItem1";
-            this.manageFoodToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
+            this.manageFoodToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.manageFoodToolStripMenuItem1.Text = "Manage Food";
             this.manageFoodToolStripMenuItem1.Click += new System.EventHandler(this.manageFoodToolStripMenuItem1_Click);
             // 
             // manageSetMenuToolStripMenuItem
             // 
             this.manageSetMenuToolStripMenuItem.Name = "manageSetMenuToolStripMenuItem";
-            this.manageSetMenuToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.manageSetMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manageSetMenuToolStripMenuItem.Text = "Manage Set menu";
             this.manageSetMenuToolStripMenuItem.Click += new System.EventHandler(this.manageSetMenuToolStripMenuItem_Click);
             // 
@@ -116,17 +115,19 @@
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
             // 
-            // tablePlanToolStripMenuItem
-            // 
-            this.tablePlanToolStripMenuItem.Name = "tablePlanToolStripMenuItem";
-            this.tablePlanToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.tablePlanToolStripMenuItem.Text = "Table Plan";
-            // 
             // kitchenToolStripMenuItem
             // 
+            this.kitchenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateOrderToolStripMenuItem});
             this.kitchenToolStripMenuItem.Name = "kitchenToolStripMenuItem";
             this.kitchenToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.kitchenToolStripMenuItem.Text = "Kitchen";
+            // 
+            // updateOrderToolStripMenuItem
+            // 
+            this.updateOrderToolStripMenuItem.Name = "updateOrderToolStripMenuItem";
+            this.updateOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateOrderToolStripMenuItem.Text = "Update Order";
             // 
             // Form1
             // 
@@ -159,8 +160,8 @@
         private System.Windows.Forms.ToolStripMenuItem placeOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoiceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem discountToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tablePlanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kitchenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateOrderToolStripMenuItem;
     }
 }
 
