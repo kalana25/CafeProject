@@ -1,6 +1,6 @@
 ﻿namespace CafeApplication
 {
-    partial class PlaceOrder
+    partial class PlaceOrders
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,14 @@
             this.label12 = new System.Windows.Forms.Label();
             this.lblGrandTotal = new System.Windows.Forms.Label();
             this.txtItemId = new System.Windows.Forms.TextBox();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MenuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvFoodBevarage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOrderItems)).BeginInit();
@@ -278,6 +286,15 @@
             this.gvOrderItems.AllowUserToDeleteRows = false;
             this.gvOrderItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvOrderItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvOrderItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Code,
+            this.ItemName,
+            this.Price,
+            this.Quantity,
+            this.Total,
+            this.ProductId,
+            this.MenuId,
+            this.Type});
             this.gvOrderItems.Location = new System.Drawing.Point(19, 441);
             this.gvOrderItems.Name = "gvOrderItems";
             this.gvOrderItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -327,7 +344,47 @@
             this.txtItemId.TabIndex = 38;
             this.txtItemId.Visible = false;
             // 
-            // PlaceOrder
+            // Code
+            // 
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "Name";
+            this.ItemName.Name = "ItemName";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
+            // ProductId
+            // 
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.Name = "ProductId";
+            // 
+            // MenuId
+            // 
+            this.MenuId.HeaderText = "MenuId";
+            this.MenuId.Name = "MenuId";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "ItemType";
+            this.Type.Name = "Type";
+            // 
+            // PlaceOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -362,7 +419,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "PlaceOrder";
+            this.Name = "PlaceOrders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ManageBevarage";
             this.Load += new System.EventHandler(this.PlaceOrder_Load);
@@ -396,10 +453,18 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView gvOrderItems;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblGrandTotal;
         private System.Windows.Forms.TextBox txtItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MenuId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridView gvOrderItems;
     }
 }

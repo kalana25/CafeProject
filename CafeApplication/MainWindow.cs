@@ -51,7 +51,7 @@ namespace CafeApplication
 
         private void placeOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PlaceOrder order = new PlaceOrder();
+            PlaceOrders order = new PlaceOrders();
             order.MdiParent = this;
             order.Show();
         }

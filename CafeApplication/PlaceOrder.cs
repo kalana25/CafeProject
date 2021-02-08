@@ -10,21 +10,20 @@ using DataAccessLayer;
 
 namespace CafeApplication
 {
-    public partial class PlaceOrder : Form
+    public partial class PlaceOrders : Form
     {
         private readonly Order order;
         private readonly SetMenu setMenu;
         private readonly Discount discount;
-        private readonly DataTable orderItemDataTable;
+        //private readonly DataTable orderItemDataTable;
         private decimal grandTotal = 0;
         private string itemType;
-        public PlaceOrder()
+        public PlaceOrders()
         {
             InitializeComponent();
             order = new Order();
             setMenu = new SetMenu();
             discount = new Discount();
-            orderItemDataTable = new DataTable();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -37,15 +36,15 @@ namespace CafeApplication
             try
             {
                 int orderId = order.SaveOrderHeader(DateTime.Today,grandTotal);
-                foreach(DataRow row in orderItemDataTable.Rows)
+                foreach(DataGridViewRow gvr in gvOrderItems.Rows)
                 {
-                    if(row["ItemType"].ToString()== "Product")
+                    if(gvr.Cells["Type"].Value.ToString() == "Product")
                     {
-                        order.SaveOrderProductDetails(orderId, int.Parse(row["ProductId"].ToString()), int.Parse(row["Quantity"].ToString()), decimal.Parse(row["Total"].ToString()));
+                        order.SaveOrderProductDetails(orderId, int.Parse(gvr.Cells["ProductId"].Value.ToString()), int.Parse(gvr.Cells["Quantity"].Value.ToString()), decimal.Parse(gvr.Cells["Total"].Value.ToString()));
                     } 
                     else
                     {
-                        order.SaveOrderMenuDetails(orderId, int.Parse(row["MenuId"].ToString()), int.Parse(row["Quantity"].ToString()), decimal.Parse(row["Total"].ToString()));
+                        order.SaveOrderMenuDetails(orderId, int.Parse(gvr.Cells["MenuId"].Value.ToString()), int.Parse(gvr.Cells["Quantity"].Value.ToString()), decimal.Parse(gvr.Cells["Total"].Value.ToString()));
                     }
                 }
                 MessageBox.Show("Order saved sussessfully.", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -63,27 +62,15 @@ namespace CafeApplication
             gvFoodBevarage.Refresh();
             gvMenu.DataSource = setMenu.Retrieve();
             gvMenu.Refresh();
-            CreateDataTable();
+            ConfigGridView();
         }
 
-        private void CreateDataTable ()
+        public void ConfigGridView()
         {
-            DataColumn colCode = new DataColumn("Code");
-            orderItemDataTable.Columns.Add(colCode);
-            DataColumn colName = new DataColumn("Name");
-            orderItemDataTable.Columns.Add(colName);
-            DataColumn colPrice = new DataColumn("Price");
-            orderItemDataTable.Columns.Add(colPrice);
-            DataColumn colQuantity = new DataColumn("Quantity");
-            orderItemDataTable.Columns.Add(colQuantity);
-            DataColumn colTotal = new DataColumn("Total");
-            orderItemDataTable.Columns.Add(colTotal);
-            DataColumn colProdId = new DataColumn("ProductId");
-            orderItemDataTable.Columns.Add(colProdId);
-            DataColumn colMenuId = new DataColumn("MenuId");
-            orderItemDataTable.Columns.Add(colMenuId);
-            DataColumn colItemType = new DataColumn("ItemType");
-            orderItemDataTable.Columns.Add(colItemType);
+            gvOrderItems.AutoGenerateColumns = false;
+            gvOrderItems.Columns["MenuId"].Visible = false;
+            gvOrderItems.Columns["ProductId"].Visible = false;
+            gvOrderItems.Columns["Type"].Visible = false;
         }
 
         private void ClearTextBoxes()
@@ -100,7 +87,7 @@ namespace CafeApplication
         {
             itemType = null;
             grandTotal = 0m;
-            orderItemDataTable.Rows.Clear();
+            gvOrderItems.Rows.Clear();
             lblGrandTotal.Text = "0.00";
         }
 
@@ -120,28 +107,25 @@ namespace CafeApplication
         {
             if(e.KeyCode == Keys.Enter)
             {
-                DataRow dr = orderItemDataTable.NewRow();
-                dr["Code"] = txtItemCode.Text;
-                dr["Name"] = txtItemName.Text;
-                dr["Price"] = txtItemPrice.Text;
-                dr["Quantity"] = txtQuantity.Text;
+                int index = gvOrderItems.Rows.Count;
+                gvOrderItems.Rows.Add();
+                gvOrderItems["Code",index].Value = txtItemCode.Text;
+                gvOrderItems["ItemName",index].Value = txtItemName.Text;
+                gvOrderItems["Price",index].Value = txtItemPrice.Text;
+                gvOrderItems["Quantity",index].Value = txtQuantity.Text;
                 decimal total = decimal.Parse(txtItemPrice.Text) * int.Parse(txtQuantity.Text);
                 total = total - decimal.Parse(txtDiscountPrice.Text);
-                dr["Total"] = (total).ToString();
-                dr["ItemType"] = itemType;
+                gvOrderItems["Total",index].Value = (total).ToString();
+                gvOrderItems["Type",index].Value = itemType;
                 if (itemType == "Menu")
                 {
-                    dr["MenuId"] = int.Parse(txtItemId.Text);
+                    gvOrderItems["MenuId",index].Value = int.Parse(txtItemId.Text);
                 }
                 else
                 {
-                    dr["ProductId"] = int.Parse(txtItemId.Text);
+                    gvOrderItems["ProductId",index].Value = int.Parse(txtItemId.Text);
 
                 }
-
-                orderItemDataTable.Rows.Add(dr);
-                gvOrderItems.DataSource = orderItemDataTable;
-                gvOrderItems.Refresh();
                 grandTotal += total;
                 lblGrandTotal.Text = grandTotal.ToString();
                 ClearTextBoxes();
